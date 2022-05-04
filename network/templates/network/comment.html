@@ -1,0 +1,34 @@
+{% load static %}
+{% load humanize %}
+
+<div class="container comment-container">
+    <div id="comment-card" class="card comment-card">
+        <div class="card-body" id="comment_{{ comment.id }}">
+            <!-- Profile picture and comment info container -->
+            <div class="post-inner-container">
+                <!-- Profile picture -->
+                <div class="profile-image-small">
+                    <img src="{{ comment.user.user_profile.avatar.url }}" alt="{{ comment.user.username }}">
+                </div>
+                <!-- Comment info -->
+                <div>
+                    <a id="user-name" class="user-name-link" href="{% url 'profile' comment.user %}">{{ comment.user }}</a>
+                    <span id="comment-timestamp" class="post-timestamp"> · {{ comment.timestamp|naturaltime }}</span>
+                </div>
+            </div>
+            <!-- Comment text -->
+            <div id="comment-text">{{ comment.text }}</div>
+            <!-- Comment buttons -->
+            <div id="comment-buttons" class="btn-group" role="group">
+                <button id="like-button" class="btn btn-default">
+                    <span id="like-icon" class="far fa-heart"></span>
+                    <span id="like-counter"></span>
+                </button>
+                {% if user == comment.user %}
+                    <button id="edit-button" type="button" class="btn btn-default">Edit</button>
+                    <button id="delete-button" type="button" class="btn btn-default">Delete</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>            
+</div>

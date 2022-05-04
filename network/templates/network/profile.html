@@ -1,0 +1,87 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    <!-- User's profile -->
+    <div class="container profile-container">
+        <!-- profile card -->
+        <div class="card profile-info-card">
+            <div class="card-body">
+                <!-- profile image -->
+                <div id="profile-image-large" class="profile-image-large">
+                    <img src="{{ profile_user.user_profile.avatar.url }}" alt="{{ profile_user.username }}">
+                </div>
+                <!-- profile image modal -->
+                <div class="modal fade" id="profile-image-modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header profile-image-modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="profile-image-xlarge">
+                                    <img src="{{ profile_user.user_profile.avatar.url }}" alt="{{ profile_user.username }}">                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                <!-- user info and follow button -->
+                <div class="profile-card-container">
+                    <div class="profile-user-info-container">
+                        <!-- user name -->                
+                        <div class=user-name-large>{{ profile_user }}</div>
+                        <!-- follower count -->                
+                        <div class="follower-count" id="follower_count">
+                            {{ follower_count }} follower{{follower_count|pluralize:",s"}}
+                        </div>
+                        <!-- User bio -->                
+                        <div class=user-bio>{{ profile_user.user_profile.bio }}</div>
+                    </div>
+                    <div class="profile-buttons-container">
+                        <!-- Follow button -->                
+                        {% if user.is_authenticated and user != profile_user %}
+                            <br>
+                            <button id='follow-button' type="button" class="btn btn-primary follow-button">{{ following|yesno:"Unfollow,Follow" }}</button>
+                        {% endif %}
+                        <!-- Profile edit button -->                
+                        {% if user.is_authenticated and user == profile_user %}
+                            <br>
+                            <a href="{% url 'my_profile' %}" class="btn btn-secondary edit-profile-button">Edit</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
+    <br>
+
+    <!-- User's posts -->
+    <div class="container">
+        {% if user == profile_user %}
+            <h4 class="title">Your posts</h4>
+        {% else %}
+            <h4 class="title">Posts by {{ profile_user }}</h4>
+        {% endif %}
+    </div>
+    {% if profile_user.user_posts.all|length == 0 %}
+        <div class="container posts-container">
+            {% if user == profile_user %}
+                <div>You haven't posted anything yet.</div>        
+            {% else %}
+                <div>{{ profile_user }} has not posted anything yet.</div>
+            {% endif %}
+    {% endif %}
+    <div id="posts"></div>
+    <div id="sentinel"></div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/profile.js' %}"></script>
+    <script src="{% static 'network/post_loader.js' %}"></script>
+{% endblock %}
+

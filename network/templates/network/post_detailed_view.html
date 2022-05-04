@@ -1,0 +1,73 @@
+{% extends "network/layout.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block body %}
+    <div id="post-container" class="container">
+        <div class="card detailed-view-card">
+            <div class="card-body detailed-view" id="post_{{ post.id }}">          
+                <!-- Profile picture and post info container -->
+                <div class="post-inner-container">
+                    <!-- Profile picture -->
+                    <div class="profile-image-small">
+                        <img src="{{ post.user.user_profile.avatar.url }}" alt="{{ post.user.username }}">
+                    </div>
+                    <!-- User name -->
+                    <div>
+                        <a id="user-name" class="user-name-link" href="{% url 'profile' post.user %}">{{ post.user }}</a>
+                    </div>
+                </div>
+                <!-- Post text -->
+                <div>
+                    <h4 id="post-text">{{ post.text }}</h4>
+                </div>
+                <!-- Post timestamp -->
+                <div>
+                    <span id='post-timestamp'> {{ post.timestamp }}{% if post.edited %} · Edited{% endif %}</span>
+                </div>
+                <!-- Post buttons -->
+                <div id="post-buttons" class="btn-group" role="group">
+                    <button id="like-button" class="btn btn-default">
+                        <span id="like-icon" class="far fa-heart"></span>
+                        <span id="like-counter"></span>
+                    </button>
+                    <button id="comment-button" class="btn btn-default">
+                        <span id="comment-icon" class="far fa-comment"></span>
+                        <span id="comment-counter">{{ post.post_comments.all|length }}</span>
+                    </button>
+                    {% if user == post.user %}
+                        <button id="edit-button" type="button" class="btn btn-default">Edit</button>
+                        <button id="delete-button" type="button" class="btn btn-default">Delete</button>
+                    {% endif %}
+                </div>        
+            </div>
+        </div>
+    </div>
+
+    <!-- New comment section -->
+    {% if user.is_authenticated %}
+    <div class="container new-comment-container">
+        <div class="card new-comment-card">
+            <div class="card-body new-comment-body-card">
+                <textarea id='comment-text-area' class="form-control new-comment-text-area" rows="2" placeholder="Write a comment"></textarea>
+                <div class="comment-button-container"><button id='write-comment-button' type="button" class="btn btn-primary write-comment-button">Post</button></div>
+            </div>
+        </div>            
+    </div>
+    {% endif %}
+    
+    <!-- All comments section -->
+    <div class="comments-container">
+    {% for comment in post.post_comments.all %}
+        {% include "network/comment.html" %} 
+    {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/posts.js' %}"></script>
+    <script src="{% static 'network/new_comment_control.js' %}"></script>
+    <script src="{% static 'network/comments.js' %}"></script>
+{% endblock %}
+

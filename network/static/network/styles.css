@@ -1,0 +1,322 @@
+/* TITLES */
+.title-container {
+    margin-top: 10px;
+}
+
+.title {
+    width: 60%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color:black;
+}
+
+/* CONTAINERS */
+.container {
+    width:60%;
+    max-width: 800px;
+    min-width: 400px;
+}
+
+.form-container {
+    width: 60%;
+}
+
+.posts-container, .comments-container {
+    margin-top: 0.5rem;
+}
+
+/* POSTS AND COMMENTS CARDS */
+.post-card {
+    border-radius: 0.3rem;
+    margin-bottom: 0.5rem;
+    border-color: #EFEFEF;
+}
+
+.post-card > [id^="post_"]:hover {
+    background-color: #F3EFEF;
+    cursor:pointer;
+}
+
+.comment-card {
+    border: none;
+    margin-bottom: 0.5rem;
+}
+
+/* Link to detailed view of post in post card */
+.post-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Post and comment card inner container with image, name and info */
+.post-inner-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    padding-bottom: 0.5rem;
+}
+
+/* Post card info */
+.post-timestamp {
+    color: grey;
+}
+
+/* Profile picture in post and comment cards */
+.profile-image-small img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+/* Link to user profile in post and comment cards */
+.user-name-link {
+    font-weight: bold;
+}
+
+/* Post and comment card buttons */
+#like-button {
+    padding-left:0;
+}
+
+#post-buttons > button,a {
+    margin-top:0.2rem;
+}
+
+#post-buttons > button:hover,a:hover {
+    font-weight:bold;
+}
+
+#post-buttons > button,span,a {
+    color: grey;
+}
+
+/* NEW POST AREA */
+.new-post-container {
+    margin-top: 1rem;
+}
+
+.new-post-card {
+    border-color: #EFEFEF;
+}
+
+.new-post-body-card {
+    padding:0.5rem;
+}
+
+.new-post-text-area {
+    font-size: larger;
+    border:none;
+}
+
+.post-button-container {
+    position: relative;
+    margin-top: 1rem;
+    padding:1.2rem;
+}
+
+.new-post-button {
+    position:absolute;
+    top: 0 !important;
+    right: 0 !important;
+    border-radius: 15px;
+    width: 100px;
+    font-weight:bold;
+}
+
+/* NEW COMMENT AREA */
+.new-comment-container {
+    margin-top: 1rem;
+}
+
+.new-comment-card {
+    border-color: #EFEFEF;
+}
+
+.new-comment-body-card {
+    padding:0.5rem;
+}
+
+.new-comment-text-area {
+    font-size: larger;
+    border:none;
+}
+
+.comment-button-container {
+    position: relative;
+    margin-top: 1rem;
+    padding:1.2rem;
+}
+
+.write-comment-button {
+    position:absolute;
+    top: 0 !important;
+    right: 0 !important;
+    border-radius: 15px;
+    width: 100px;
+    font-weight:bold;
+}
+
+/* PROFILE PAGE */
+.profile-container {
+    margin-top: 0.5rem;
+}
+
+.profile-card-container {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.profile-buttons-container {
+    position:relative;
+}
+
+.user-name-large {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.follower-count {
+    color: grey;
+}
+
+.follow-button, .unfollow-button, .edit-profile-button {
+    position:absolute;
+    right:0;
+    vertical-align:center;
+    border-radius: 15px;
+    width: 100px;
+    font-weight:bold;
+}
+
+/* Profile image displayed on profile page */
+.profile-image-large img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.profile-image-large img:hover {
+    filter: grayscale(0.2);
+}
+
+/* Profile image displayed in modal */
+.profile-image-modal-header {
+    border:none;
+}
+
+.profile-image-xlarge {
+    text-align: center;
+}
+
+.profile-image-xlarge img {
+    height: 300px;
+    width: 300px;  
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* POST DETAILED VIEW */
+.detailed-view-card {
+    margin-top:0.5rem;
+    margin-bottom:0.5rem;
+    border-color: #EFEFEF;
+}
+
+/* LOGIN PAGE */
+.login-container {
+    margin-top: 2rem;
+    width: 30%;
+    max-width: 100px;
+}
+
+.login-button {
+    font-size: larger;
+    background-color: white;
+    border-color: royalblue;
+    color:royalblue;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.login-error-message {
+    color:red;
+}
+
+/* Register page */
+.register-container {
+    margin-top: 2rem;
+    width: 30%;
+    max-width: 100px;
+}
+
+.register-button {
+    font-size: larger;
+    background-color: white;
+    border-color: royalblue;
+    color:royalblue;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.register-error-message {
+    color:red;
+}
+
+/* Create profile page */
+.profile-form-container {
+    margin-top: 2rem;
+    width: 30%;
+    max-width: 100px;
+}
+
+.profile-submit-button {
+    font-size: larger;
+    background-color: white;
+    border-color: royalblue;
+    color:royalblue;
+    border-radius: 20px;
+    width: 49%;
+    margin-bottom: 1rem;
+}
+
+/* New user picture upload input field */
+.picture-upload {
+    border-style:none;
+}
+
+/* Edit profile page */
+.edit-profile-cancel {
+    font-size: larger;
+    background-color: white;
+    border-color: grey;
+    color:grey;
+    border-radius: 20px;
+    width: 49%;
+    margin-bottom: 1rem;
+}
+
+.edit-profile-cancel >a:hover {
+    font-weight:normal;
+    color:white;
+    text-decoration: none;
+}
+
+.edit-profile-cancel:hover >a {
+    color:white;
+}
+
+/* Edit text area */
+#text-to-edit {
+    outline:none;
+}
+
+

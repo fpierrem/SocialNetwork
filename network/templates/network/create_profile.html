@@ -1,0 +1,27 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="container profile-form-container">
+    <h4>Add a profile picture and a bio</h4>
+    <form action="{% url 'my_profile' %}" method="post" enctype="multipart/form-data" id="profile-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea class="form-control bio-textarea" id="bio" name="bio" maxlength="200" cols="40" rows="5" form="profile-form" placeholder="Write a bio"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="user-photo"><h6>Upload a profile picture</h6></label>
+            <input class="form-control picture-upload" type="file" id="user-photo" name="user-photo" onchange="return file_validation()">
+            <small>Max size 1 Mb</small>
+        </div>
+        <input class="btn btn-primary profile-submit-button" type="submit" value="Create">
+        <button class="btn btn-secondary edit-profile-cancel"><a href="{% url 'index' %}" >Skip for now</a></button>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/file_validation.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <!-- New post section -->
+    {% if user.is_authenticated %}
+        <div id="new-post-container" class="container new-post-container">
+            <div class="card new-post-card">
+                <div class="card-body new-post-body-card">
+                    <textarea id='new-post' class="form-control new-post-text-area" rows="2" placeholder="Write a new post"></textarea>
+                    <div class="post-button-container"><button id='post-button' type="button" class="btn btn-primary new-post-button">Post</button></div>
+                </div>
+            </div>            
+        </div>
+        <br>
+    {% endif %}
+
+    <!-- All posts -->
+    <div class="posts-container">
+        <div class="container title-container">
+            <h4 class="title">All posts</h4>
+        </div>
+        <div id="posts"></div>
+        <div id="sentinel"></div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/post_loader.js' %}"></script>
+    <script src="{% static 'network/new_post_control.js' %}"></script>
+{% endblock %}
+
