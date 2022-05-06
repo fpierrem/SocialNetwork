@@ -37,14 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,7 +132,7 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'static'),
 # )
 
-WHITENOISE_USE_FINDERS = True
+# WHITENOISE_USE_FINDERS = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
