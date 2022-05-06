@@ -7,15 +7,9 @@ class User(AbstractUser):
     pass
     
 class UserProfile(models.Model):    
-    def validate_image(image):
-        file_size = image.file.size
-        limit_mb = 1
-        if file_size > limit_mb * 1024 * 1024:
-            raise ValidationError("Max size of file is %s MB" % limit_mb)
-
     user = models.OneToOneField(User,on_delete=models.CASCADE, related_name='user_profile')
     bio = models.TextField()
-    avatar = models.ImageField(default="profile_pics/default_avatar.png", upload_to = "profile_pics",validators=[validate_image])
+    avatar = models.ImageField(default="profile_pics/default_avatar.png", upload_to = "profile_pics")
 
 
 class Post(models.Model):
