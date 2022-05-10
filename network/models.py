@@ -9,7 +9,9 @@ class User(AbstractUser):
 class UserProfile(models.Model):    
     user = models.OneToOneField(User,on_delete=models.CASCADE, related_name='user_profile')
     bio = models.TextField()
-    avatar = models.ImageField(default="/static/network/default_avatar.png", upload_to = "profile_pics")
+    avatar = models.ImageField(blank=True,null=True,upload_to = "profile_pics")
+    def get_avatar(self):
+        return self.avatar if self.avatar else "/static/network/default_avatar.png"
 
 
 class Post(models.Model):
