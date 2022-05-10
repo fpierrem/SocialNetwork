@@ -26,9 +26,8 @@ urlpatterns = [
     path("count_likes", views.count_likes, name="count_likes"),
     path("like", views.like, name="like"),
     path("unlike", views.unlike, name="unlike"),
+    re_path(r'^media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT})
 ]
-
-urlpatterns += re_path(r'^media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT})
 
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
