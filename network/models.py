@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.conf.urls.static import static
 
 
 class User(AbstractUser):
@@ -10,7 +9,7 @@ class User(AbstractUser):
 class UserProfile(models.Model):    
     user = models.OneToOneField(User,on_delete=models.CASCADE, related_name='user_profile')
     bio = models.TextField()
-    avatar = models.ImageField(default="/static/default_avatar.png", upload_to = "profile_pics")
+    avatar = models.ImageField(default="/static/network/default_avatar.png", upload_to = "profile_pics")
 
 
 class Post(models.Model):
